@@ -6,5 +6,5 @@ To use Kode!. Please download the .py and .bat, then launch the .bat script! If 
 
 Thanks!
 
-Best Regards,
-koala
+-Best Regards,
+-koala
