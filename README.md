@@ -28,3 +28,5 @@ Usage
 Follow the on-screen prompts to create a username and secure password. You will receive a recovery code that will only be shown once. Type "I'm Done" exactly to proceed.
 
 Enjoy coding with Kode! Keep it simple, keep it secure.
+
+P.S: I wanted to crash out writing this lol.
