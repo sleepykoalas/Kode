@@ -14,4 +14,4 @@ Kode! is a simple and lightweight text-based editor designed to provide an effic
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/kode.git
+   git clone https://github.com/sleepykoalas/kode.git
