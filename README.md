@@ -23,9 +23,9 @@ Kode! is a simple and lightweight text-based editor designed to provide an effic
   python3 --version
 
 If missing, install via your package manager, e.g.:
-```bash
+
 sudo apt-get install python3   # Debian/Ubuntu
-```bash
+
 brew install python            # macOS with Homebrew
 
     Windows:
@@ -42,11 +42,11 @@ brew install python            # macOS with Homebrew
 Clone and Run
 
     Clone the repository from GitHub (works on Linux, macOS, and Windows):
-```bash
+
 git clone https://github.com/sleepykoalas/kode.git
 
 Navigate to the project directory:
-```bash
+
 cd kode
 
 Run the script:
@@ -56,7 +56,7 @@ Run the script:
 python3 kode.py
 
 On Windows (Command Prompt or PowerShell):
-```bash
+
         python kode.py
 
 Usage
@@ -73,5 +73,3 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 License
 
 This project is licensed under the Apache License 2.0. See the LICENSE file for details.
-
-Kode! was developed to provide a secure and straightforward text editing experience, especially for users who prefer Linux and similar operating systems.
