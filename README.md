@@ -42,11 +42,11 @@ Clone and Run
 
     Clone the repository from GitHub (works on Linux, macOS, and Windows):
 
-git clone https://github.com/yourusername/yourrepo.git
+git clone https://github.com/sleepykoalas/kode.git
 
 Navigate to the project directory:
 
-cd yourrepo
+cd kode
 
 Run the script:
 
