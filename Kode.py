@@ -20,6 +20,78 @@ def clear():
 def hasher(input_str: str) -> str:
     return hashlib.sha256(input_str.encode('utf-8')).hexdigest()
 
+def detect_distro():
+    try:
+        with open("/etc/os-release") as f:
+            for line in f:
+                if line.startswith("ID="):
+                    return line.strip().split("=")[1].strip('"').lower()
+    except Exception:
+        return "unknown"
+def neofetch_minimal():
+    distro = detect_distro()
+    # Minimal ASCII logos + colors per distro
+    logos = {
+        "arch": ("\033[94m" +  # blue
+                 r"""
+       /\    
+      /  \   
+     / /\ \  
+    / ____ \ 
+   /_/    \_\
+    """ + "\033[0m"),
+        "ubuntu": ("\033[91m" +  # orange/red
+                   r"""
+      _ _   
+     | | |  
+     | | |  
+     |_|_|  
+    """ + "\033[0m"),
+        "fedora": ("\033[96m" +  # cyan
+                   r"""
+    __      
+   / /__    
+  /  '_ \   
+ /_/\_\_\  
+    """ + "\033[0m")
+    }
+    ascii_logo = logos.get(distro, "\033[92m[ Kode! Linux ]\033[0m")  # green default
+
+    # We'll gather minimal info via shell commands (no full neofetch)
+    try:
+        # OS Name
+        with open("/etc/os-release") as f:
+            lines = f.read()
+        import re
+        os_name = re.search(r'^PRETTY_NAME="([^"]+)"', lines, re.MULTILINE)
+        os_name = os_name.group(1) if os_name else distro.capitalize()
+
+        # Kernel version
+        kernel = subprocess.check_output(["uname", "-r"]).decode().strip()
+
+        # CPU model (first line from /proc/cpuinfo)
+        cpuinfo = subprocess.check_output(["grep", "model name", "/proc/cpuinfo"]).decode().split('\n')[0]
+        cpu_model = cpuinfo.split(':')[1].strip() if ':' in cpuinfo else "Unknown CPU"
+
+        # Total RAM (in MB)
+        meminfo = subprocess.check_output(["grep", "MemTotal", "/proc/meminfo"]).decode()
+        mem_mb = int(re.search(r'\d+', meminfo).group()) // 1024
+
+    except Exception as e:
+        os_name = distro.capitalize()
+        kernel = "Unknown Kernel"
+        cpu_model = "Unknown CPU"
+        mem_mb = "Unknown RAM"
+
+    clear()
+    # Print minimal ascii + specs
+    print(ascii_logo)
+    print(f"OS: {os_name}")
+    print(f"Kernel: {kernel}")
+    print(f"CPU: {cpu_model}")
+    print(f"RAM: {mem_mb} MB")
+
+
 def logoloader():
     clear()
     logo = r"""
@@ -71,69 +143,36 @@ def signup():
     else:
         backupcode(username, password)
 
-def filecreator():
-    input("temp")
-
-def editor():
-    input("temp")
-
-def filedeleter():
-    input("temp")
-
-def settings():
-    input("temp")
-
-def credits():
-    input("temp")
-
-def neofetch_surprise():
-    try:
-        subprocess.run(["neofetch"], check=True)
-    except FileNotFoundError:
-        print("Installing neofetch...")
-        subprocess.run(["sudo", "apt", "install", "-y", "neofetch"], check=True)
-        subprocess.run(["neofetch"])
-    except Exception as e:
-        print(f"Neofetch surprise failed: {e}")
-    input("Press Enter to continue...")
-
 def notewriting():
     logoloader()
-    whattodo = input(">> ").lower().strip()
-    
-    if whattodo == "info":
-        clear()
-        help_text = """
+    while True:
+        whattodo = input(">> ").lower().strip()
+        if whattodo == "info":
+            clear()
+            help_text = """
 Info Menu for Kode!
 ---------------------------
-new      - Creates a new file
-edit     - Edits a file
-del      - Deletes a file
-setting  - Opens the settings
-credits  - Show the credits
-info     - Shows this help menu
+new     - Creates a new file
+edit    - Edits a file
+del     - Deletes a file
+settings - Opens the settings
+credits - Show the credits
+info    - Shows this help menu
 """
-        # Only add neofetch command if on Linux/WSL (posix)
-        if os.name == "posix":
-            help_text += "neofetch - ✨ (Only for Linux/WSL users!)\n"
-        
-        input(f"{help_text}\nPress Enter to continue: ")
-    elif whattodo == "new":
-        filecreator()
-    elif whattodo == "edit":
-        editor()
-    elif whattodo == "del":
-        filedeleter()
-    elif whattodo == "settings":
-        settings()
-    elif whattodo == "credits":
-        credits()
-    elif whattodo == "neofetch" and os.name == "posix":
-        neofetch_surprise()
-    else:
-        input("Unknown command. Press Enter to return.")
-    
-    notewriting()  # loop back for next command
+            if os.name == "posix":  # Linux/macOS only
+                help_text += "neofetch - Shows a minimal OS info screen with custom ASCII art\n"
+            input(f"{help_text}\nPress Enter to continue: ")
+            clear()
+        elif whattodo == "neofetch" and os.name == "posix":
+            clear()
+            neofetch_minimal()
+        elif whattodo == "exit":
+            print("Exiting Kode!")
+            sys.exit()
+        else:
+            print(f"Command '{whattodo}' not recognized. Type 'info' for help.")
+            time.sleep(0.5)
+            clear()
 
 if __name__ == "__main__":
     try:
