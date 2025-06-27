@@ -1,47 +1,156 @@
 # Kode!
 
-Kode! is a lightweight, text-based editor implemented in Python. It emphasizes security and privacy by hashing user credentials and providing a one-time recovery code for account backup.
+**Kode!** is a minimalist, text-based editor built in Python with a focus on simplicity, speed, and security. Designed for terminal environments, Kode! provides a lightweight and distraction-free writing experience with built-in account and backup systems.
+
+---
 
 ## Features
 
-- Simple and efficient text-based interface  
-- Secure user signup with SHA-256 hashed usernames and passwords  
-- Generates a unique recovery code displayed only once per user  
-- Cross-platform support for clearing the console screen (Windows, Linux, macOS)  
-- Hidden password input using the `getpass` module  
+- Command-line interface (CLI) for fast and simple text editing
+- Secure account setup with SHA-256 password hashing
+- One-time recovery code for password reset support
+- Intelligent OS detection with appropriate screen clearing behavior
+- User-friendly navigation and visual branding through ASCII art
 
-## Requirements
+---
 
-- Python 3.6 or higher  
-- No external dependencies required; utilizes Python's standard library  
+## Installation
 
-## Usage
+### Requirements
 
-1. Download or clone the repository.  
-2. Run the main script using the command:  
-   ```bash
-   python kode.py
+- Python 3.7 or newer
+- No external libraries required; uses only the Python standard library
 
-    Follow the on-screen prompts to create a user account, enter a secure password, and receive a recovery code.
+### Setup
 
-Implementation Details
+Clone the repository and run the program:
 
-    The program securely hashes usernames and passwords with SHA-256 before storage or processing.
+```bash
+git clone https://github.com/YOUR-USERNAME/kode.git
+cd kode
+python3 kode.py
 
-    A unique recovery code is generated per signup for password recovery purposes and is shown only once.
+    Note: Kode! is optimized for Linux, macOS, and WSL environments. It may not perform as expected on native Windows terminals.
 
-    The console screen is cleared appropriately depending on the detected operating system to maintain a clean user interface.
+Usage
 
-    Users with passwords shorter than eight characters receive a warning and must confirm their choice.
+Once launched, follow the on-screen prompts to:
 
-Limitations & Future Work
+    Create a new username and password
 
-    Currently, the program supports single-user signup with no persistent storage.
+    Receive a one-time backup recovery code
 
-    Multi-user support, encrypted storage, and enhanced text editing features are planned for future versions.
+    Access the Kode! editor shell
 
+From the main menu, you can:
+
+    Create new files
+
+    Edit existing files
+
+    Delete files
+
+    Access application settings
+
+    View credits
+
+    Read the help/info section
+
+Data Storage
+
+User data is stored in a local JSON file under:
+
+Logs and Data/users.json
+
+This file contains SHA-256 hashes of the username, password, and backup code. No plaintext information is stored.
 License
 
-This project is licensed under the Apache License 2.0. See the LICENSE file for details.
+This project is licensed under the Apache License 2.0.
+Acknowledgments
 
-P.S: Those on Linux (only Linux, no UNIX), theres a surprise :)
+Kode! was created as a lightweight alternative for users seeking a simple, secure text-based environment directly within their terminal.
+
+
+---
+
+Let me know if you’d like a version with badge icons (e.g. Python version, license) or if you want help writing the `LICENSE` file itself.
+
+You said:
+Add the Made with Made with 💻 and rage
+ChatGPT said:
+
+Absolutely 😤—here’s the formal README.md with your special touch added in a subtle, classy way:
+
+# Kode!
+
+**Kode!** is a minimalist, text-based editor built in Python with a focus on simplicity, speed, and security. Designed for terminal environments, Kode! provides a lightweight and distraction-free writing experience with built-in account and backup systems.
+
+---
+
+## Features
+
+- Command-line interface (CLI) for fast and simple text editing  
+- Secure account setup with SHA-256 password hashing  
+- One-time recovery code for password reset support  
+- Intelligent OS detection with appropriate screen clearing behavior  
+- User-friendly navigation and visual branding through ASCII art  
+
+---
+
+## Installation
+
+### Requirements
+
+- Python 3.7 or newer  
+- No external libraries required; uses only the Python standard library  
+
+### Setup
+
+Clone the repository and run the program:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/kode.git
+cd kode
+python3 kode.py
+
+    Note: Kode! is optimized for Linux, macOS, and WSL environments. It may not perform as expected on native Windows terminals.
+
+Usage
+
+Once launched, follow the on-screen prompts to:
+
+    Create a new username and password
+
+    Receive a one-time backup recovery code
+
+    Access the Kode! editor shell
+
+From the main menu, you can:
+
+    Create new files
+
+    Edit existing files
+
+    Delete files
+
+    Access application settings
+
+    View credits
+
+    Read the help/info section
+
+Data Storage
+
+User data is stored in a local JSON file under:
+
+Logs and Data/users.json
+
+This file contains SHA-256 hashes of the username, password, and backup code. No plaintext information is stored.
+License
+
+This project is licensed under the Apache License 2.0.
+Acknowledgments
+
+Kode! was created as a lightweight alternative for users seeking a secure, terminal-based environment.
+
+Made with 💻 and rage.
