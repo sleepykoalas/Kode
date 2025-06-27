@@ -112,8 +112,11 @@ del      - Deletes a file
 setting  - Opens the settings
 credits  - Show the credits
 info     - Shows this help menu
-neofetch - ✨ (Only for Linux/WSL users!)
 """
+        # Only add neofetch command if on Linux/WSL (posix)
+        if os.name == "posix":
+            help_text += "neofetch - ✨ (Only for Linux/WSL users!)\n"
+        
         input(f"{help_text}\nPress Enter to continue: ")
     elif whattodo == "new":
         filecreator()
