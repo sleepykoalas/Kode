@@ -1,4 +1,4 @@
-# Kode!
+# Kode! (BETA)
 
 Kode! is a minimalistic and secure terminal-based note-taking application designed primarily for Linux users. It provides a simple, privacy-focused interface for managing notes, with hashed credential storage and a clean command-line experience.
 
