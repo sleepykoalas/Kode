@@ -67,12 +67,12 @@ Linux users can discover a hidden command that displays minimal system informati
 neofetch
 
 Try it out if you’re feeling adventurous! 🐧✨
-Contributing
+# Contributing
 
 Contributions are welcome! Please submit issues or pull requests to enhance functionality or fix bugs. Preference is given to Linux-compatible improvements.
-License
+# License
 
 This project is licensed under the Apache License 2.0. See the LICENSE file for details.
-Disclaimer
+# Disclaimer
 
 Kode! is designed with a Linux-first philosophy. While Windows support is provided via batch scripts, full functionality and optimal experience are achieved on Linux systems.
